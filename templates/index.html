@@ -1,0 +1,29 @@
+{% load compress %}
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Django Fullstack with HTMX and Tailwind CSS</title>
+    {% compress css %}
+    <link rel="stylesheet" href="{% static 'src/output.css' %}">
+    {% endcompress %}
+</head>
+
+<body>
+    <div class="flex h-screen">
+        <span class="m-auto">
+            <button class="rounded border border-sky-500 px-4 py-2 text-sky-600" hx-trigger="click" hx-get="/welcome" hx-target="#result">Show Text</button>
+            <div class="text-4xl font-extrabold" id="result"></div>
+        </span>
+    </div>
+
+    {% compress js %}
+    <script type="text/javascript" src="{% static 'src/htmx.js' %}"></script>
+    {% endcompress %}
+</body>
+
+</html>
